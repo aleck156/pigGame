@@ -14,10 +14,6 @@ const btnRollDice = document.querySelector('.btn--roll');
 const btnNewGame = document.querySelector('.btn--new');
 const btnHoldGame = document.querySelector('.btn--hold');
 
-score0El.textContent = 0;
-score1El.textContent = 0;
-diceEl.classList.add('hidden');
-
 const scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
@@ -46,6 +42,9 @@ const switchPlayer = function () {
 };
 
 const init = function () {
+  console.log(`Initializing the game ...`);
+  diceEl.classList.add('hidden');
+
   // update the page
   score0El.textContent = 0;
   score1El.textContent = 0;
