@@ -45,6 +45,8 @@ btnRollDice.addEventListener('click', () => {
   // check for a roll == 1
   if (dice === 1) {
     // switch player
+    // switchPlayer();
+    // console.log(`Switching player to ${activePlayer}`);
     // using bool logic because there are only 2 players, otherwise new system has to be implemented
     // change hidden / active css styling
     // reset scores
