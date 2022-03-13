@@ -42,9 +42,6 @@ const switchPlayer = function () {
 };
 
 const init = function () {
-  console.log(`Initializing the game ...`);
-  diceEl.classList.add('hidden');
-
   // update the page
   score0El.textContent = 0;
   score1El.textContent = 0;
@@ -58,6 +55,7 @@ const init = function () {
 
   player0El.classList.add('player--active');
   player1El.classList.remove('player--active');
+  diceEl.classList.add('hidden');
 
   // reset scores
   scores[0] = scores[1] = 0;
