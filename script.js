@@ -63,11 +63,19 @@ btnRollDice.addEventListener('click', () => {
   }
 });
 
+btnHoldGame.addEventListener('click', () => {
+  // 1. add current score to the score of active player's score
+  // 2. check if score's at least 100
+  // 3. finish the game or switch to the next player
+});
+
 /*
 1. make a separate branch for this piece of code
 2. refactor it so that it uses objects instead of global variables spreaded all over the place
 3. test it - code not tested is a code not valid
 4. optimize readability over anything else
+5. add modal at the page load - game rules,
+    // closing off modal = esc key, close button, clicking on overlay
 
 const gameScore = {
   activePlayer: 0,
