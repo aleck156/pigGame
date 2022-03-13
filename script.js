@@ -12,16 +12,6 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 diceEl.classList.add('hidden');
 
-const gameScore = {
-  currentPlayer: 0,
-  player0: {
-    score: 0,
-  },
-  player1: {
-    score: 0,
-  },
-};
-
 const rollDice = function () {
   return Math.floor(Math.random() * 6) + 1;
 };
@@ -35,6 +25,9 @@ btnRollDice.addEventListener('click', () => {
   // check for a roll == 1
   if (dice === 1) {
     // switch player
+    // using bool logic because there are only 2 players, otherwise new system has to be implemented
+    // change hidden / active css styling
+    // reset scores
   } else {
     // add a rol to current player's score
   }
