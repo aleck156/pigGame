@@ -26,6 +26,16 @@ const rollDice = function () {
   return Math.floor(Math.random() * 6) + 1;
 };
 
+// const switchPlayer = function () {
+//   activePlayer = Number(!activePlayer);
+//   togglePlayerActive();
+// };
+
+// const togglePlayerActive = function () {
+//   player0El.classList.toggle('player--active');
+//   player1El.classList.toggle('player--active');
+// };
+
 btnRollDice.addEventListener('click', () => {
   const dice = rollDice();
   if (diceEl.classList.contains('hidden')) diceEl.classList.remove('hidden');
