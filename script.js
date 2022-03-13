@@ -17,5 +17,15 @@ const rollDice = function () {
 };
 
 btnRollDice.addEventListener('click', () => {
-  console.log(rollDice());
+  // console.log(rollDice());
+  const dice = rollDice();
+  // display the dice
+  if (diceEl.classList.contains('hidden')) diceEl.classList.remove('hidden');
+  diceEl.src = `dice-${dice}.png`;
+  // check for a roll == 1
+  if (dice === 1) {
+  } else {
+  }
+  // true = switch to next player
+  // false = add to current player's score
 });
