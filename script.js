@@ -45,6 +45,25 @@ const switchPlayer = function () {
   currentScore = 0;
 };
 
+btnNewGame.addEventListener('click', () => {
+  // update the page
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  current0El.textContent = 0;
+  current1El.textContent = 0;
+  // update css classes
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.remove('player--winner');
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--active');
+  // reset scores
+  scores[0] = scores[1] = 0;
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+});
+
 btnRollDice.addEventListener('click', () => {
   if (playing) {
     const dice = rollDice();
