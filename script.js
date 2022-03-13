@@ -20,11 +20,6 @@ const rollDice = function () {
   return Math.floor(Math.random() * 6) + 1;
 };
 
-// const switchPlayer = function () {
-//   activePlayer = Number(!activePlayer);
-//   togglePlayerActive();
-// };
-
 const togglePlayerActive = function () {
   player0El.classList.toggle('player--active');
   player1El.classList.toggle('player--active');
@@ -80,13 +75,7 @@ btnRollDice.addEventListener('click', () => {
     // check for a roll == 1
     if (dice === 1) {
       switchPlayer();
-      // switch player
-      // switchPlayer();
-      // using bool logic because there are only 2 players, otherwise new system has to be implemented
-      // change hidden / active css styling
-      // reset scores
     } else {
-      // add a rol to current player's score
       currentScore += dice;
       document.getElementById(`current--${activePlayer}`).textContent =
         currentScore;
