@@ -36,6 +36,14 @@ const togglePlayerActive = function () {
   player1El.classList.toggle('player--active');
 };
 
+const switchPlayer = function () {
+  document.getElementById(`current--${activePlayer}`).textContent = 0;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  console.log(`Switching active player to ${activePlayer}`);
+  togglePlayerActive();
+  currentScore = 0;
+};
+
 btnRollDice.addEventListener('click', () => {
   const dice = rollDice();
   if (diceEl.classList.contains('hidden')) diceEl.classList.remove('hidden');
@@ -44,13 +52,8 @@ btnRollDice.addEventListener('click', () => {
 
   // check for a roll == 1
   if (dice === 1) {
+    switchPlayer();
     // switch player
-    document.getElementById(`current--${activePlayer}`).textContent = 0;
-    activePlayer = activePlayer === 0 ? 1 : 0;
-    console.log(`Switching active player to ${activePlayer}`);
-    togglePlayerActive();
-    currentScore = 0;
-
     // switchPlayer();
     // using bool logic because there are only 2 players, otherwise new system has to be implemented
     // change hidden / active css styling
@@ -64,7 +67,25 @@ btnRollDice.addEventListener('click', () => {
 });
 
 btnHoldGame.addEventListener('click', () => {
-  // 1. add current score to the score of active player's score
+  scores[activePlayer] += currentScore;
+  document.getElementById(`score--${activePlayer}`).textContent =
+    scores[activePlayer];
+  switchPlayer();
+
+  if (scores[activePlayer] >= 100) {
+    document
+      .querySelector(`player--${activePlayer}`)
+      .classList.add('player--winner');
+    document
+      .querySelector(`player--${activePlayer}`)
+      .classList.remove('player--active');
+  }
+  // // 1. add current score to the score of active player's score
+  // scores[activePlayer] = currentScore;
+  // togglePlayerActive();
+  // activePlayer = activePlayer === 0 ? 1 : 0;
+  // currentScore = scores[activePlayer];
+  // document.getElementById(`score--${activePlayer}`).textContent = currentScore;
   // 2. check if score's at least 100
   // 3. finish the game or switch to the next player
 });
