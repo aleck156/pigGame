@@ -14,10 +14,7 @@ const btnRollDice = document.querySelector('.btn--roll');
 const btnNewGame = document.querySelector('.btn--new');
 const btnHoldGame = document.querySelector('.btn--hold');
 
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
-let playing = true;
+let scores, currentScore, activePlayer, playing;
 
 const rollDice = function () {
   return Math.floor(Math.random() * 6) + 1;
@@ -42,6 +39,11 @@ const switchPlayer = function () {
 };
 
 const init = function () {
+  // set initial values to game scores
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
   // update the page
   score0El.textContent = 0;
   score1El.textContent = 0;
