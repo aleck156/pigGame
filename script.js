@@ -53,7 +53,8 @@ btnRollDice.addEventListener('click', () => {
   } else {
     // add a rol to current player's score
     currentScore += dice;
-    current0El.textContent = currentScore;
+    document.getElementById(`current--${activePlayer}`).textContent =
+      currentScore;
   }
 });
 
