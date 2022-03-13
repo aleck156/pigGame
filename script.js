@@ -21,6 +21,7 @@ diceEl.classList.add('hidden');
 const scores = [0, 0];
 let currentScore = 0;
 let activePlayer = 0;
+let playing = true;
 
 const rollDice = function () {
   return Math.floor(Math.random() * 6) + 1;
@@ -45,41 +46,46 @@ const switchPlayer = function () {
 };
 
 btnRollDice.addEventListener('click', () => {
-  const dice = rollDice();
-  if (diceEl.classList.contains('hidden')) diceEl.classList.remove('hidden');
-  diceEl.src = `dice-${dice}.png`;
-  console.log(`Dice rolled: ${dice} // Current Player: ${activePlayer}`);
+  if (playing) {
+    const dice = rollDice();
+    if (diceEl.classList.contains('hidden')) diceEl.classList.remove('hidden');
+    diceEl.src = `dice-${dice}.png`;
+    console.log(`Dice rolled: ${dice} // Current Player: ${activePlayer}`);
 
-  // check for a roll == 1
-  if (dice === 1) {
-    switchPlayer();
-    // switch player
-    // switchPlayer();
-    // using bool logic because there are only 2 players, otherwise new system has to be implemented
-    // change hidden / active css styling
-    // reset scores
-  } else {
-    // add a rol to current player's score
-    currentScore += dice;
-    document.getElementById(`current--${activePlayer}`).textContent =
-      currentScore;
+    // check for a roll == 1
+    if (dice === 1) {
+      switchPlayer();
+      // switch player
+      // switchPlayer();
+      // using bool logic because there are only 2 players, otherwise new system has to be implemented
+      // change hidden / active css styling
+      // reset scores
+    } else {
+      // add a rol to current player's score
+      currentScore += dice;
+      document.getElementById(`current--${activePlayer}`).textContent =
+        currentScore;
+    }
   }
 });
 
 btnHoldGame.addEventListener('click', () => {
-  scores[activePlayer] += currentScore;
-  document.getElementById(`score--${activePlayer}`).textContent =
-    scores[activePlayer];
+  if (playing) {
+    scores[activePlayer] += currentScore;
+    document.getElementById(`score--${activePlayer}`).textContent =
+      scores[activePlayer];
 
-  if (scores[activePlayer] >= 100) {
-    document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.add('player--winner');
-    document
-      .querySelector(`.player--${activePlayer}`)
-      .classList.remove('player--active');
-  } else {
-    switchPlayer();
+    if (scores[activePlayer] >= 100) {
+      playing = false;
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.add('player--winner');
+      document
+        .querySelector(`.player--${activePlayer}`)
+        .classList.remove('player--active');
+    } else {
+      switchPlayer();
+    }
   }
   // // 1. add current score to the score of active player's score
   // scores[activePlayer] = currentScore;
