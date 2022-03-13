@@ -12,20 +12,30 @@ score0El.textContent = 0;
 score1El.textContent = 0;
 diceEl.classList.add('hidden');
 
+const gameScore = {
+  currentPlayer: 0,
+  player0: {
+    score: 0,
+  },
+  player1: {
+    score: 0,
+  },
+};
+
 const rollDice = function () {
   return Math.floor(Math.random() * 6) + 1;
 };
 
 btnRollDice.addEventListener('click', () => {
-  // console.log(rollDice());
   const dice = rollDice();
-  // display the dice
   if (diceEl.classList.contains('hidden')) diceEl.classList.remove('hidden');
   diceEl.src = `dice-${dice}.png`;
+  console.log(`Dice rolled: ${dice}`);
+
   // check for a roll == 1
   if (dice === 1) {
+    // switch player
   } else {
+    // add a rol to current player's score
   }
-  // true = switch to next player
-  // false = add to current player's score
 });
