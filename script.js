@@ -31,22 +31,27 @@ const rollDice = function () {
 //   togglePlayerActive();
 // };
 
-// const togglePlayerActive = function () {
-//   player0El.classList.toggle('player--active');
-//   player1El.classList.toggle('player--active');
-// };
+const togglePlayerActive = function () {
+  player0El.classList.toggle('player--active');
+  player1El.classList.toggle('player--active');
+};
 
 btnRollDice.addEventListener('click', () => {
   const dice = rollDice();
   if (diceEl.classList.contains('hidden')) diceEl.classList.remove('hidden');
   diceEl.src = `dice-${dice}.png`;
-  console.log(`Dice rolled: ${dice}`);
+  console.log(`Dice rolled: ${dice} // Current Player: ${activePlayer}`);
 
   // check for a roll == 1
   if (dice === 1) {
     // switch player
+    document.getElementById(`current--${activePlayer}`).textContent = 0;
+    activePlayer = activePlayer === 0 ? 1 : 0;
+    console.log(`Switching active player to ${activePlayer}`);
+    togglePlayerActive();
+    currentScore = 0;
+
     // switchPlayer();
-    // console.log(`Switching player to ${activePlayer}`);
     // using bool logic because there are only 2 players, otherwise new system has to be implemented
     // change hidden / active css styling
     // reset scores
