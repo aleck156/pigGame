@@ -102,14 +102,6 @@ btnHoldGame.addEventListener('click', () => {
       switchPlayer();
     }
   }
-  // // 1. add current score to the score of active player's score
-  // scores[activePlayer] = currentScore;
-  // togglePlayerActive();
-  // activePlayer = activePlayer === 0 ? 1 : 0;
-  // currentScore = scores[activePlayer];
-  // document.getElementById(`score--${activePlayer}`).textContent = currentScore;
-  // 2. check if score's at least 100
-  // 3. finish the game or switch to the next player
 });
 
 /*
